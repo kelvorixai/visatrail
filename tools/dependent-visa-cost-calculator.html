@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6051499531677717" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Dependent Visa Cost Calculator | VisaTrail</title>
+<meta name="description" content="Free UAE dependent visa cost calculator. Enter your family size and visa validity for an instant estimate of entry permits, medical tests, Emirates ID, and stamping fees.">
+<link rel="canonical" href="https://kelvorixai.github.io/visatrail/tools/dependent-visa-cost-calculator.html">
+<meta property="og:title" content="Family Dependent Visa Cost Calculator">
+<meta property="og:description" content="Enter your family size and visa validity to see the real cost of sponsoring dependents in the UAE.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .calc{ border:1px solid var(--line); padding:28px 26px; margin-top:28px; background:var(--paper-raised); }
+  .field{ display:flex; flex-direction:column; gap:6px; margin-bottom:20px; }
+  .field label{ font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:500; }
+  .field input{
+    font: inherit; font-size:16px; padding:11px 12px; border:1px solid var(--line);
+    background:var(--paper); color:var(--ink); border-radius:2px; width:100%;
+  }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:480px){ .field-row{ grid-template-columns:1fr; } }
+  button.calc-btn{
+    font: inherit; font-size:15px; font-weight:600; background:var(--sage-soft); color:var(--paper);
+    border:none; padding:13px 22px; border-radius:2px; cursor:pointer; width:100%;
+  }
+  button.calc-btn:hover{ background:var(--sage); }
+  .result{ margin-top:26px; padding:22px 24px; border:1px solid var(--plum); border-left:4px solid var(--plum); background:var(--paper); display:none; }
+  .result.show{ display:block; }
+  .result .amount{ font-family:"Fraunces", serif; font-size:2.4rem; font-weight:700; color:var(--plum-strong); font-variant-numeric:tabular-nums; }
+  .result .amount span{ font-size:1.1rem; font-family:"IBM Plex Sans", sans-serif; font-weight:500; color:var(--ink-soft); }
+  .result .breakdown{ margin-top:14px; font-size:13.5px; color:var(--ink-soft); font-family:"IBM Plex Mono", monospace; line-height:1.8; }
+  .share-btn{
+    margin-top:16px; font: inherit; font-size:13px; background:none; color:var(--sage-soft);
+    border:1px solid var(--sage-soft); padding:8px 14px; border-radius:2px; cursor:pointer;
+  }
+  .share-btn:hover{ background:var(--sage-soft); color:var(--paper); }
+  .formula-note{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">VisaTrail</a>
+    <nav class="site">
+      <a href="../index.html">Guides</a>
+      <a href="index.html">Tools</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="post">
+    <header class="meta">
+      <span class="tag">Tool</span>
+      <h1>Family dependent visa cost calculator</h1>
+      <p class="dek">Enter your family size, how many are entering the UAE for the first time, and your chosen visa validity to get an instant estimate of the full per-dependent cost stack for this visa cycle.</p>
+    </header>
+
+    <div class="calc">
+      <div class="field-row">
+        <div class="field">
+          <label for="adults">Adult dependents (18+)</label>
+          <input type="number" id="adults" inputmode="numeric" placeholder="e.g. 1" min="0" step="1">
+        </div>
+        <div class="field">
+          <label for="children">Child dependents (under 18)</label>
+          <input type="number" id="children" inputmode="numeric" placeholder="e.g. 2" min="0" step="1">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="entrants">Entering UAE for the first time</label>
+          <input type="number" id="entrants" inputmode="numeric" placeholder="e.g. 3 (0 if already in-country)" min="0" step="1">
+        </div>
+        <div class="field">
+          <label for="validity">Visa validity (years)</label>
+          <input type="number" id="validity" inputmode="numeric" placeholder="e.g. 2" min="1" max="3" step="1">
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calcBtn" type="button">Calculate my visa cost</button>
+
+      <div class="result" id="result">
+        <div class="amount"><span>Total for this visa cycle: </span><span id="amountValue">0</span></div>
+        <div class="breakdown" id="breakdown"></div>
+        <button class="share-btn" id="shareBtn" type="button">Copy result to share</button>
+      </div>
+    </div>
+
+    <div class="content" style="margin-top:36px;">
+      <h2>How this is calculated</h2>
+      <p>This adds up the standard per-dependent cost stack described in our <a href="../articles/uae-family-dependent-visa-cost-breakdown.html">family visa cost breakdown</a>, using typical mid-range fees for each line item:</p>
+      <ul>
+        <li><strong>Entry permit:</strong> ~AED 750 per dependent entering the UAE for the first time on this visa</li>
+        <li><strong>Medical fitness test:</strong> ~AED 500 per adult dependent (18+ only — children are generally exempt)</li>
+        <li><strong>Emirates ID:</strong> ~AED 150-350 per dependent, scaled to your chosen visa validity</li>
+        <li><strong>Visa stamping:</strong> ~AED 1,000-1,600 per dependent, scaled to your chosen visa validity</li>
+        <li><strong>Typing/service center fees:</strong> ~AED 200 per dependent</li>
+      </ul>
+      <p>Longer visa validity costs more per dependent upfront (higher Emirates ID and stamping fees) but is renewed less often — a 3-year visa costs more today but spreads that cost over more years than a 1-year visa.</p>
+      <p class="formula-note">This is an estimate using typical mid-range published fees, not a quote — actual costs vary by emirate, free zone vs. mainland sponsorship, and case specifics. Confirm current figures with GDRFA, ICP, or a licensed typing center before applying.</p>
+    </div>
+  </article>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>VisaTrail</span>
+    <span>Also from Kelvorix AI: <a href="https://kelvorixai.github.io/">see all our sites</a></span>
+    <span>Educational content only — not immigration or legal advice.</span>
+    <span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var calcBtn = document.getElementById('calcBtn');
+  var shareBtn = document.getElementById('shareBtn');
+  var resultEl = document.getElementById('result');
+  var amountEl = document.getElementById('amountValue');
+  var breakdownEl = document.getElementById('breakdown');
+  var lastSummary = '';
+
+  var ENTRY_PERMIT = 750;
+  var MEDICAL = 500;
+  var TYPING = 200;
+
+  function emiratesIdFee(years){
+    if (years <= 1) return 150;
+    if (years === 2) return 250;
+    return 350;
+  }
+  function stampingFee(years){
+    if (years <= 1) return 1000;
+    if (years === 2) return 1300;
+    return 1600;
+  }
+
+  function fmt(n){
+    return n.toLocaleString('en-US', {maximumFractionDigits: 0});
+  }
+
+  calcBtn.addEventListener('click', function(){
+    var adults = parseFloat(document.getElementById('adults').value) || 0;
+    var children = parseFloat(document.getElementById('children').value) || 0;
+    var entrants = parseFloat(document.getElementById('entrants').value) || 0;
+    var validity = parseFloat(document.getElementById('validity').value) || 0;
+
+    var totalDependents = adults + children;
+
+    if (totalDependents <= 0 || validity <= 0) {
+      breakdownEl.textContent = '';
+      amountEl.textContent = 'Enter your numbers above';
+      resultEl.classList.add('show');
+      shareBtn.style.display = 'none';
+      return;
+    }
+
+    var idFee = emiratesIdFee(validity);
+    var stampFee = stampingFee(validity);
+
+    var entryCost = entrants * ENTRY_PERMIT;
+    var medicalCost = adults * MEDICAL;
+    var idCost = totalDependents * idFee;
+    var stampingCost = totalDependents * stampFee;
+    var typingCost = totalDependents * TYPING;
+
+    var total = entryCost + medicalCost + idCost + stampingCost + typingCost;
+    var costPerDependent = total / totalDependents;
+
+    var lines = [];
+    lines.push('Entry permits (' + entrants + '): ' + fmt(entryCost));
+    lines.push('Medical tests (' + adults + ' adult' + (adults===1?'':'s') + '): ' + fmt(medicalCost));
+    lines.push('Emirates ID (' + totalDependents + ' dependents): ' + fmt(idCost));
+    lines.push('Visa stamping (' + totalDependents + ' dependents): ' + fmt(stampingCost));
+    lines.push('Typing/service fees: ' + fmt(typingCost));
+    lines.push('Average per dependent: ' + fmt(costPerDependent));
+    lines.push('Renews roughly every ' + validity + ' year' + (validity===1?'':'s'));
+
+    amountEl.textContent = fmt(Math.round(total));
+    breakdownEl.innerHTML = lines.join('<br>');
+    resultEl.classList.add('show');
+    shareBtn.style.display = 'inline-block';
+    lastSummary = 'Sponsoring ' + totalDependents + ' dependent(s) in the UAE for a ' + validity + '-year visa came to about AED ' + fmt(Math.round(total)) + '. Try it yourself: https://kelvorixai.github.io/visatrail/tools/dependent-visa-cost-calculator.html';
+  });
+
+  shareBtn.addEventListener('click', function(){
+    if (!lastSummary) return;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(lastSummary).then(function(){
+        shareBtn.textContent = 'Copied!';
+        setTimeout(function(){ shareBtn.textContent = 'Copy result to share'; }, 1800);
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
+
