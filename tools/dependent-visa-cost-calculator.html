@@ -40,7 +40,70 @@
   }
   .share-btn:hover{ background:var(--sage-soft); color:var(--paper); }
   .formula-note{ font-size:13px; color:var(--ink-soft); margin-top:10px; }
+  .faq{ margin-top:36px; }
+  .faq details{ border:1px solid var(--line); border-radius:2px; padding:14px 16px; margin-bottom:10px; background:var(--paper-raised); }
+  .faq summary{ cursor:pointer; font-weight:600; list-style:none; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; float:right; color:var(--ink-soft); }
+  .faq details[open] summary::after{ content:"\2013"; }
+  .faq p{ margin-top:10px; font-size:14.5px; color:var(--ink-soft); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do children need a medical fitness test for a UAE dependent visa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — medical fitness tests are generally only required for adult dependents (18+). Child dependents are typically exempt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does a longer visa validity cost more upfront?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because Emirates ID and stamping fees scale with the visa validity you choose — a 3-year visa costs more per dependent today, but you renew far less often, so the cost spreads over more years than a 1-year visa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the entry permit fee for, and who needs it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's roughly AED 750 per dependent who is entering the UAE for the first time on this visa. It doesn't apply to dependents already living in the country."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do these figures vary by emirate or sponsorship type?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — these are estimates using typical mid-range published fees. Actual costs vary by emirate, free zone vs. mainland sponsorship, and case specifics, so confirm current figures with GDRFA, ICP, or a licensed typing center before applying."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Family Dependent Visa Cost Calculator",
+  "url": "https://kelvorixai.github.io/visatrail/tools/dependent-visa-cost-calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "AED"
+  },
+  "description": "Free calculator that estimates UAE dependent visa costs across entry permits, medical tests, Emirates ID, and stamping fees, scaled to family size and visa validity."
+}
+</script>
 </head>
 <body>
 
@@ -106,6 +169,26 @@
       </ul>
       <p>Longer visa validity costs more per dependent upfront (higher Emirates ID and stamping fees) but is renewed less often — a 3-year visa costs more today but spreads that cost over more years than a 1-year visa.</p>
       <p class="formula-note">This is an estimate using typical mid-range published fees, not a quote — actual costs vary by emirate, free zone vs. mainland sponsorship, and case specifics. Confirm current figures with GDRFA, ICP, or a licensed typing center before applying.</p>
+    </div>
+
+    <div class="content faq" style="margin-top:36px;">
+      <h2>Frequently asked questions</h2>
+      <details>
+        <summary>Do children need a medical fitness test for a UAE dependent visa?</summary>
+        <p>No — medical fitness tests are generally only required for adult dependents (18+). Child dependents are typically exempt.</p>
+      </details>
+      <details>
+        <summary>Why does a longer visa validity cost more upfront?</summary>
+        <p>Because Emirates ID and stamping fees scale with the visa validity you choose — a 3-year visa costs more per dependent today, but you renew far less often, so the cost spreads over more years than a 1-year visa.</p>
+      </details>
+      <details>
+        <summary>What's the entry permit fee for, and who needs it?</summary>
+        <p>It's roughly AED 750 per dependent who is entering the UAE for the first time on this visa. It doesn't apply to dependents already living in the country.</p>
+      </details>
+      <details>
+        <summary>Do these figures vary by emirate or sponsorship type?</summary>
+        <p>Yes — these are estimates using typical mid-range published fees. Actual costs vary by emirate, free zone vs. mainland sponsorship, and case specifics, so confirm current figures with GDRFA, ICP, or a licensed typing center before applying.</p>
+      </details>
     </div>
   </article>
 </main>
@@ -205,4 +288,3 @@
 
 </body>
 </html>
-
